@@ -1,0 +1,19 @@
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+
+# Dados fictícios: [Potência do motor, Peso do veículo]
+X = np.array([
+    [100, 900], [120, 1100], [150, 1300], [200, 1500], [250, 1700],
+    [80, 800], [90, 850], [180, 1400], [220, 1600], [300, 1800]
+])
+
+Y = np.array(["Econômico", "Econômico", "Econômico", "Não Econômico", "Não Econômico",
+              "Econômico", "Econômico", "Não Econômico", "Não Econômico", "Não Econômico"])
+
+# Treinar modelo
+modelo = DecisionTreeClassifier()
+modelo.fit(X, Y)
+
+# Visualizar árvore
+plt.figure(figsize=(10,5))
+plot_tree(modelo, feature_names=["Potência", "Peso"], class_names=["Econômico", "Não Econômico"], filled=True)
+plt.show()
