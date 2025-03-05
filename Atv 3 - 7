@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Dados fictícios
+X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).reshape(-1, 1)
+Y = np.array([1, 1, 1, 0, 0, 0, 0, 0, 0, 0])  # 1 = Risco, 0 = Sem risco
+
+# Treinar modelo
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+modelo = LogisticRegression()
+modelo.fit(X_train, Y_train)
+
+# Avaliação
+Y_pred = modelo.predict(X_test)
+acc = accuracy_score(Y_test, Y_pred)
+
+print(f"Acurácia do modelo: {acc:.2f}")
