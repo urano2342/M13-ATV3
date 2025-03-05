@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Dados fictícios (notas)
+X = np.array([
+    [70, 80], [85, 90], [60, 55], [90, 95], [75, 70], 
+    [40, 50], [95, 85], [50, 60], [30, 40], [88, 78]
+])
+
+# Aplicando K-Means
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans.fit(X)
+
+# Plot dos clusters
+plt.scatter(X[:, 0], X[:, 1], c=kmeans.labels_, cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], color='red', marker='x')
+plt.xlabel("Nota Matemática")
+plt.ylabel("Nota Ciências")
+plt.title("Agrupamento de Alunos")
+plt.show()
